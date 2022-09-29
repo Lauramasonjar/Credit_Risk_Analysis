@@ -38,10 +38,9 @@ In this analysis we used six different algorithms of **supervised machine learni
   - First four algorithms are based on **resampling techniques** and are designed to deal with **class imbalance**. 
   - After the data is resampled, Logistic Regression is used to predict the outcome. 
     - Logistic regression predicts **binary outcomes** .
-  - The last two models are from ensemble learning group.
+  - The last two models are from an ensemble learning group.
     - The concept of ensemble learning is the process of combining multiple models, 
-    - Like decision tree algorithms, to help improve the accuracy and robustness, as well as decrease variance of the model,
-    - therefore, increase the overall performance of the model.
+    - Like decision tree algorithms, to help improve the accuracy and robustness, as well as decrease variance of the model, therefore, increase the overall performance of the model.
 
 ### 1. Naive Random Oversampling and Logistic Regression
 In random oversampling, instances of the minority class are randomly selected and added to the training set until the majority and minority classes are balanced. 
@@ -51,28 +50,28 @@ In random oversampling, instances of the minority class are randomly selected an
     - For high risk: 0.01
     - For low risk: 1.00
 - **Recall**
-    - For high risk: 0.71
-    - For low risk: 0.60
+    - For high risk: 0.70
+    - For low risk: 0.61
 
-IMAGE
+![Credit_Risk_Analysis](https://github.com/Lauramasonjar/Credit_Risk_Analysis/blob/main/Images/Naive_Random_Oversampling.png)
 
 ### 2. SMOTE Oversampling and Logistic Regression
-The synthetic minority oversampling technique (SMOTE) is another oversampling approach where the minority class is increased. Unlike other oversampling methods, SMOTE interpolated new instances, that is, for an instance from the minority class, several its closest neighbors are chosen. Based on the values of these neighbors, new values are created.
+The synthetic minority oversampling technique (SMOTE) is another oversampling approach where the minority class is increased. Unlike other oversampling methods, SMOTE interpolated new instances, that is, for an instance from the minority class, several of its closest neighbors are chosen. Based on the values of these neighbors, new values are created.
 
-- **Accuracy score:** 0.65
+- **Accuracy score:** 0.66
 - **Precision**
     - For high risk: 0.01
     - For low risk: 1.00
 - **Recall**
     - For high risk: 0.63
-    - For low risk: 0.68
+    - For low risk: 0.69
 
-IMAGE
+![Credit_Risk_Analysis](https://github.com/Lauramasonjar/Credit_Risk_Analysis/blob/main/Images/SMOTE_Oversampling.png)
 
 ### 3. Cluster Centroids Undersampling and Logistic Regression
 Undersampling takes the opposite approach of oversampling. Instead of increasing the number of the minority class, the size of the majority class is decreased.
 
-- **Accuracy score:** 0.54
+- **Accuracy score:** 0.66
 - **Precision**
     - For high risk: 0.01
     - For low risk: 1.00
@@ -80,7 +79,7 @@ Undersampling takes the opposite approach of oversampling. Instead of increasing
     - For high risk: 0.69
     - For low risk: 0.40
 
-IMAGE
+![Credit_Risk_Analysis](https://github.com/Lauramasonjar/Credit_Risk_Analysis/blob/main/Images/Undersampling.png)
 
 ### 4. SMOTEENN (Combination of Over and Under Sampling) and Logistic Regression
 SMOTEENN is an approach to resampling that combines aspects of both oversampling and undersampling - oversample the minority class with SMOTE and clean the resulting data with an undersampling strategy. 
@@ -93,7 +92,7 @@ SMOTEENN is an approach to resampling that combines aspects of both oversampling
     - For high risk: 0.72
     - For low risk: 0.57
 
-IMAGE
+![Credit_Risk_Analysis](https://github.com/Lauramasonjar/Credit_Risk_Analysis/blob/main/Images/Combination_Over_and_Under_Sampling.png)
 
 
 ### 5. Balanced Random Forest Classifier
@@ -107,7 +106,7 @@ Instead of having a single, complex tree like the ones created by decision trees
     - For high risk: 0.70
     - For low risk: 0.87
 
-IMAGE
+![Credit_Risk_Analysis](https://github.com/Lauramasonjar/Credit_Risk_Analysis/blob/main/Images/Balanced_Random_Forest_Classifier.png)
 
 
 ### 6. Easy Ensemble AdaBoost Classifier
@@ -121,7 +120,7 @@ In AdaBoost Classifier, a model is trained then evaluated. After evaluating the 
     - For high risk: 0.92
     - For low risk: 0.94
 
-IMAGE
+![Credit_Risk_Analysis](https://github.com/Lauramasonjar/Credit_Risk_Analysis/blob/main/Images/Easy_Ensemble_AdaBoost_Classifier.png)
 
 ## Summary
 
@@ -141,19 +140,19 @@ From the results section above we can see how different ML models work on the sa
 **First 4 models – Resampling and Logistic regression**
 
 - From the results above we can see that the first four models don’t do well based on the **accuracy scores**.
-  - Those scores are 0.65, 0.66, 0.54 and 0.54 for Naive Random Oversampling, SMOTE Oversampling, Cluster Centroids Undersampling and SMOTEENN model respectively.
+  - Those scores are 0.65, 0.66, 0.66 and 0.54 for Naive Random Oversampling, SMOTE Oversampling, Cluster Centroids Undersampling and SMOTEENN model respectively.
   - It means the models were accurate roughly a bit more than half of the time.
 - **Precision** for all four models is 0.01 for high-risk loans and 1.00 for low-risk loans. 
 - **Low precision score** for high-risk loans is due to large number of false positives,
   -  It means low risk loans were marked as high-risk loans.
   -  High score for low-risk loans indicate that nearly all low-risk scores were marked correctly,
-  - **recall score** (0.71 for Naive Random Oversampling and Logistic Regression, for example) indicates that there were quite a few low-risk loans that were marked as high risk, when they weren’t.
+  - **recall score** (0.70 for Naive Random Oversampling and Logistic Regression, for example) indicates that there were quite a few low-risk loans that were marked as high risk, when they weren’t.
   -   Actual high-risk loans have slightly better scores on recall (0.60 for Naive Random Oversampling and Logistic Regression, for example) meaning that there weren’t as many false negatives or not too many high-risk loans were marked as low risk loans. 
 
 **Last 2 models – Ensemble models**
 
 - These models did better as compared to above models.
-- Their **accuracy scores** are 0.93 and 0.92 for Balanced Random Forest Classifier and Easy Ensemble AdaBoost Classifier respectively.
+- Their **accuracy scores** are 0.78 and 0.92 for Balanced Random Forest Classifier and Easy Ensemble AdaBoost Classifier respectively.
 - **Recall scores** for each model and with – low and high-risk scores and precision for low risk were high, meaning very good in accuracy.
 - **Precision** for high-risk loans in both models are not high.
   - 0.03 and 0.09 for Balanced Random Forest Classifier and Easy Ensemble AdaBoost Classifier respectively, 
